@@ -72,6 +72,10 @@ module.exports = {
         ],
 
         loaders: [
+            { test: /\.jsx?$/,
+              loaders: ['react-hot', 'jsx?harmony'],
+              include: path.join(__dirname, 'src')
+            },
             {
                 test: /\.vue$/,
                 loader: 'vue'
@@ -82,10 +86,6 @@ module.exports = {
                 include: projectRoot,
                 exclude: /node_modules/
             },
-            /*{
-              test: /\.css$/,
-              loader: 'style-loader!css-loader'
-            },*/
             {
                 test: /\.html$/,
                 loader: 'html'
