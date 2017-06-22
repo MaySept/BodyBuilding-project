@@ -7,23 +7,11 @@
       <div class="lg-form">
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="登录" name="first">
-            <div class="input-content">
-              <el-input placeholder="用户名/邮箱" v-model="login.name">
-                <template slot="prepend">用户名</template>
-              </el-input>
-              <p class="prompt">忘记用户名</p>
-              <el-input placeholder="" v-model="login.password">
-                <template slot="prepend">密&nbsp;&nbsp;&nbsp;码</template>
-              </el-input>
-              <p class="prompt">忘记密码</p>
-              <div class="login-btn">
-                登录
-              </div>
-            </div>
+            <router-view></router-view>
           </el-tab-pane>
           <el-tab-pane label="注册" name="second">
             <div class="input-content">
-              <el-input placeholder="请在机身xxx处寻找" v-model="login.serialNumber">
+              <el-input placeholder="请在机身xxx处寻找" v-model="register.serialNumber">
                 <template slot="prepend">序列号</template>
               </el-input>
               <div class="login-btn">
@@ -40,10 +28,6 @@
     data () {
       return {
         activeName: 'first',
-        login: {
-          name: '',
-          password: ''
-        },
         register: {
           serialNumber: ''
         }

@@ -18,4 +18,4 @@ Vue.use(ElementUI)
   }
 })
 
-router.push("/")
+router.push("/login/loginView")
