@@ -9,9 +9,13 @@
     <el-input placeholder="" v-model="login.password">
       <template slot="prepend">密&nbsp;&nbsp;&nbsp;码</template>
     </el-input>
-    <p class="prompt">忘记密码</p>
+    <router-link to="/login/forgetPsdView">
+      <p class="prompt">忘记密码</p>
+    </router-link>
     <div class="login-btn">
-      登录
+      <router-link to="/login/loginView" class="text-style">
+        确定
+      </router-link>
     </div>
   </div>
 </template>
