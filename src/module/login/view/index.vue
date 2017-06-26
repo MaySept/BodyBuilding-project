@@ -94,11 +94,6 @@
         this.selectCity = city
       }
     }
-   /* mounted() {
-      this.$nextTick(() => {
-        this.xxx()
-      } )
-    }*/
   }
 </script>
 <style>

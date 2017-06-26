@@ -100,7 +100,7 @@ exports.getEntries = function (globPath,type) {
     // var basename = path.basename(entry, path.extname(entry), 'router.js') // 过滤router.js
     // ***************begin***************
     // 当然， 你也可以加上模块名称, 即输出如下： { module/main: './src/module/index/main.js', module/test: './src/module/test/test.js' }
-    // 最终编译输出的文件也在module目录下， 访问路径需要时 localhost:8080/module/index.html
+    // 最终编译输出的文件也在module目录下， 访问路径需要时 localhost:8080/module/homePage.html
     // slice 从已有的数组中返回选定的元素, -3 倒序选择，即选择最后三个
     //以ocahost:8080/homeIndex.html这样形式访问
     if(ishtml){
