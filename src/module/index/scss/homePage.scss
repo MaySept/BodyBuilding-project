@@ -1,2 +1,32 @@
 @charset "utf-8";
 @import "../../../assets/scss/base/necessary";
+
+.add-btn {
+  color: #ffffff;
+  background-color: darkgrey;
+  width: 150px;
+  float: left;
+  border-radius: 20px;
+}
+.cancel-btn {
+  color: #02d1b1;
+  border-color: #02d1b1;
+  width: 150px;
+  border-radius: 20px;
+}
+.preservation-btn {
+  @extend .add-btn;
+  background-color: #02d1b1;
+  border-color: #02d1b1;
+}
+.preservation-btn:focus, .preservation-btn:hover {
+  color: #ffffff;
+  border-color: #02d1b1;
+}
+.cancel-btn:focus, .cancel-btn:hover {
+  color: #02d1b1;
+  border-color: #02d1b1;
+}
+.el-dialog__footer {
+  padding: 10px 20px 20px;
+}

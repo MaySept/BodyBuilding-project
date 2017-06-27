@@ -13,7 +13,8 @@
   import headNavigation from '../.././components/header.vue'
   export default {
     data() {
-      return {}
+      return {
+      }
     },
     components: {
       SideBar,

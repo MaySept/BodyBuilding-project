@@ -51,7 +51,7 @@
     </div>
 </template>
 <script>
-  import citySelect from '../../.././components/login/citySelect.vue'
+  import citySelect from '../../.././components/citySelect.vue'
   export default {
     data () {
       return {

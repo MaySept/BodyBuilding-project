@@ -50,11 +50,12 @@
     width: 20%;
     height: 100%;
     .el-menu {
-      height: 89%;
+      height: 88%;
     }
     .sidebar-header {
       width: 100%;
-      height: 11%;
+      height: 12%;
+      min-height: 100px;
       background-color: #02d1b1;
       padding: 30px 13px;
     }
