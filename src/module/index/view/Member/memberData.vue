@@ -1,5 +1,7 @@
 <template>
   <div id="member">
+    <p class="head-title">会员数据</p>
+    <p class="title-details">样本为在本店注册ArcBody用户</p>
     <el-row class="pieChartBox">
       <el-col :span="8">
         <div class="pieChart">
@@ -161,6 +163,13 @@
     #sexRatio, #target, #weightEvaluation {
       height: 300px;
       width: 100%;
+    }
+    .title-details {
+      position: absolute;
+      left: 31%;
+      top: 49px;
+      font-size: 12px;
+      color: darkgrey;
     }
   }
 </style>

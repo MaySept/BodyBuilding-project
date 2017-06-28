@@ -1,5 +1,6 @@
 <template>
   <div id="citySelect">
+    <slot name="cityError"></slot>
     <el-row>
       <el-col :span="12">
         <el-select style="float: left"
@@ -33,6 +34,8 @@
   export default {
     data() {
       return {
+        selectProv: '',
+        selectCity: '',
         provs:[
           {label:"北京市",value:"北京市"},
           {label:"天津市",value:"天津市"},
@@ -69,9 +72,7 @@
           {label:"香港特别行政区",value:"香港特别行政区"},
           {label:"澳门特别行政区",value:"澳门特别行政区"}
           ],
-        citys: [],
-        selectProv: '',
-        selectCity: ''
+        citys: []
       }
     },
     methods: {

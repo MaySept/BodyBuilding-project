@@ -28,6 +28,58 @@ axios.interceptors.response.use(
     }
 )
 export default {
+     /*忘记用户名 输入序列号*/
+     ForgetUsername: function (params) {
+       return new Promise(function (resolve, reject) {
+         axios.get('center/getNotification.json',params).then(function (res) {
+           if (res.status >= 200 && res.status < 300) {
+             resolve(res.data)
+           }
+         }).catch((error) => {
+           reject(error)
+         })
+       })
+    },
+    /*发送邮箱*/
+     SendMail: function (params) {
+       return new Promise(function (resolve, reject) {
+         axios.get('center/getNotification.json',params).then(function (res) {
+           if (res.status >= 200 && res.status < 300) {
+             resolve(res.data)
+           }
+         }).catch((error) => {
+           reject(error)
+         })
+       })
+     },
+    /*重置密码*/
+    ResetPassword: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*注册时  序列号*/
+    RegisterNumber: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+
+
+
+
     /**
      * 获取消息列表数据
      */

@@ -1,5 +1,6 @@
 <template>
   <div id="setting">
+    <p class="head-title">设置</p>
     <div class="setting-content">
       <div>
         <el-row>

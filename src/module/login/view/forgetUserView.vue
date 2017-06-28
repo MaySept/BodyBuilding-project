@@ -4,19 +4,31 @@
       <p>请输入产品序列号</p>
       <el-input v-model="serialNumber" placeholder="请在机身xxx处寻找"></el-input>
       <div class="login-btn">
-        <router-link to="/login/showUserView" class="text-style">
+        <a class="text-style" @click="confirmBtn">
           确定
-        </router-link>
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import api from '../../.././vuex/api'
   export default {
     data() {
       return {
         serialNumber: ''
+      }
+    },
+    methods: {
+      confirmBtn() {
+        this.$router.push({ path: '/login/showUserView'})
+//        api.ForgetUsername({serialNumber:this.serialNumber}).then(function (data) {
+//          console.log('成功')
+//          this.$message.error('您输入的序列号不存在');
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
       }
     }
   }

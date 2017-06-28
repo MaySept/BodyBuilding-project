@@ -12,7 +12,7 @@ Vue.use(ElementUI)
  new Vue({
   el: '#login',
   store,
-   router,
+  router,
   template: '<app></app>',
   components: {
     'app': app

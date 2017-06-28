@@ -1,5 +1,6 @@
 <template>
   <div id="chart">
+    <p class="head-title">使用数据</p>
     <el-tabs v-model="activeName">
       <!--使用人次-->
       <el-tab-pane label="使用人次" name="first">
@@ -219,6 +220,12 @@
 </script>
 <style lang="scss">
   #chart {
+    .el-tabs__item.is-active {
+      color: #02d1b1;
+    }
+    .el-tabs__active-bar {
+      background-color:#02d1b1;
+    }
     .data-overView {
       height: 60px;
       background-color: white;

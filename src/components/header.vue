@@ -1,6 +1,5 @@
 <template>
   <div id="head-navigation" class="clearFix">
-    <h4>使用数据</h4>
     <div class="user-name clearFix">
       <img src=".././assets/logo.png" alt="">
       <el-popover
@@ -35,7 +34,6 @@
     float: right;
     width: 80%;
     height: 80px;
-    background-color: gainsboro;
     padding: 25px 50px 25px 30px;
     h4 {
       display: inline-block;

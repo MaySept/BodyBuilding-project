@@ -1,13 +1,19 @@
 <template>
   <div id="sidebar" class="clearFix">
       <div class="sidebar-header">
-        <div class="user-logo clearFix">
-          <img src=".././assets/logo.png">
-        </div>
-        <div class="system-name clearFix">
-          <p>ArcBody</p>
-          <p>管理中心</p>
-        </div>
+        <el-row>
+          <el-col :span="8">
+            <div class="user-logo clearFix">
+              <img src=".././assets/logo.png">
+            </div>
+          </el-col>
+          <el-col :span="16">
+            <div class="system-name clearFix">
+              <p>ArcBody</p>
+              <p>管理中心</p>
+            </div>
+          </el-col>
+        </el-row>
     </div>
     <el-menu default-active="1"
              class="el-menu-vertical-demo"
@@ -62,9 +68,8 @@
     .user-logo {
       width: 45px;
       height: 45px;
-      margin-left: 20%;
+      float: right;
       display: inline-block;
-      float: left;
     }
     .system-name {
       height: 60px;

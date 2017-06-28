@@ -1,5 +1,6 @@
 <template>
   <div id="coach">
+    <p class="head-title">教练管理</p>
     <el-row>
       <el-button type="success" @click="addCoach = true">+ 新增教练</el-button>
     </el-row>
