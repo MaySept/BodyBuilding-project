@@ -9,7 +9,7 @@
           </el-col>
           <el-col :span="16">
             <div class="system-name clearFix">
-              <p>ArcBody</p>
+              <p>ArcBody1</p>
               <p>管理中心</p>
             </div>
           </el-col>
