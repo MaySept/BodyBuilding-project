@@ -28,6 +28,7 @@ axios.interceptors.response.use(
     }
 )
 export default {
+  //------------------------------------------------------------------------------------------
      /*忘记用户名 输入序列号*/
      ForgetUsername: function (params) {
        return new Promise(function (resolve, reject) {
@@ -76,10 +77,49 @@ export default {
         })
       })
     },
+    //--------------------------------------------------------------------------------------------
+    /*历史记录分页信息*/
+    HistoryList: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*折线图请求方法*/
+    LineChart: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*手机号查询教练信息*/
+    searchCoach: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
 
 
 
 
+
+    //------------------------------------------------------------------------------------------
     /**
      * 获取消息列表数据
      */

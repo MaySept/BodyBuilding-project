@@ -14,6 +14,7 @@ import 'element-ui/lib/theme-default/index.css'
 import '../../assets/scss/base/_necessary.scss'
 
 require("./scss/homePage.scss")
+Vue.prototype.$Common = Common
 
 Vue.use(ElementUI)
 Vue.prototype.$echarts = echarts
@@ -27,4 +28,4 @@ new Vue({
   }
 })
 
-router.push("/chartData")
+// router.push("/chartData")

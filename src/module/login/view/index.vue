@@ -13,10 +13,14 @@
           <el-tab-pane label="注册" name="second">
             <div class="input-content" v-if="registerStepOne" style="margin-top: 10px">
               <!--输入序列号-->
-              <el-input placeholder="请在机身xxx处寻找" v-model="registerDataOne.serialNumber">
-                <template slot="prepend">序列号</template>
-              </el-input>
-              <div class="login-btn" @click="nextStep">
+              <el-form ref="serialNumFrom" :model="serialNumFrom" :rules="rules">
+                <el-form-item prop="serialNumber">
+                  <el-input placeholder="请在机身xxx处寻找" v-model="serialNumFrom.serialNumber">
+                    <template slot="prepend">序列号</template>
+                  </el-input>
+                </el-form-item>
+              </el-form>
+              <div class="login-btn" @click="nextStep('serialNumFrom')">
                 下一步
               </div>
             </div>
@@ -39,7 +43,7 @@
                   </el-input>
                 </el-form-item>
                 <citySelect @transmitData="getCityData">
-                  <P slot="cityError" v-if="cityError" class="city-error">请选择城市</P>
+                  <P slot="cityError" v-if="cityError" class="error-text">请选择城市</P>
                 </citySelect>
                 <p class="notes-style">已阅读并接受<span class="clause">使用条款</span> 和 <span class="clause">隐私政策</span></p>
                 <div class="login-btn" style="margin-top: 15px" @click="clickRegister('registerFrom')">
@@ -62,7 +66,7 @@
         registerStepOne: true,
         registerStepTwo: false,
         cityError: false,
-        registerDataOne: {
+        serialNumFrom: {
           serialNumber: ''
         },
         registerFrom: {
@@ -73,6 +77,9 @@
           selectCity: ''
         },
         rules: {
+          serialNumber: [
+            { required: true, message: '请填写序列号', trigger: 'blur' }
+          ],
           name: [
             { required: true, message: '请填写用户名', trigger: 'blur' }
           ],
@@ -98,11 +105,11 @@
         console.log(tab, event);
       },
       clickRegister(formName) {
+        // 表单校验
         if ( this.registerFrom.selectCity === '') {
           this.cityError = true
           return false
         }
-        // 表单校验
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.$message({
@@ -123,20 +130,27 @@
           }
         })
       },
-      getCityData(prov, city){
+      getCityData(prov, city) {
         this.registerFrom.selectProv = prov
         this.registerFrom.selectCity = city
 
       },
-      nextStep() {
-        this.registerStepOne = false
-        this.registerStepTwo = true
+      nextStep(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            this.registerStepOne = false
+            this.registerStepTwo = true
 //        api.RegisterNumber(this.mailForm).then(function (data) {
 //          console.log('成功')
 //          this.$message.error('您输入的序列号不存在');
 //          }).catch(function (error) {
 //            console.log('失败')
 //          })
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        })
       }
     }
   }
@@ -181,15 +195,6 @@
     #citySelect {
       margin-top: 22px;
       position: relative;
-    }
-    .city-error {
-      color: #ff4949;
-      font-size: 12px;
-      line-height: 1;
-      padding-top: 4px;
-      position: absolute;
-      top: 100%;
-      left: 0;
     }
   }
 </style>

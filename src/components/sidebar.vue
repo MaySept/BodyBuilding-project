@@ -15,9 +15,9 @@
           </el-col>
         </el-row>
     </div>
-    <el-menu default-active="1"
+    <el-menu :default-active="indexPath"
              class="el-menu-vertical-demo"
-             @open="handleOpen" @close="handleClose"
+             @select="handleSelect"
              theme="dark">
       <router-link to="/chartData">
         <el-menu-item index="1"><i class="el-icon-message"></i>使用数据</el-menu-item>
@@ -38,15 +38,20 @@
 <script>
   export default {
     data() {
-      return {}
+      return {
+        indexPath:'2'
+      }
     },
     methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+      handleSelect(index) {
+        console.log(index);
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
+    },
+    created() {
+      this.indexPath = '3'
     }
   }
 </script>

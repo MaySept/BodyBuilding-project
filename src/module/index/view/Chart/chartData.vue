@@ -104,12 +104,16 @@
             min-width="120">
           </el-table-column>
         </el-table>
+        <!--页脚分页-->
+        <Pagination @pagination="getPagination" :totalFather='total'></Pagination>
       </el-tab-pane>
     </el-tabs>
   </div>
 </template>
 
 <script>
+  import Pagination from '../../../.././components/pagination.vue'
+  import api from '../../../.././vuex/api'
   export default {
     data() {
       return {
@@ -129,27 +133,44 @@
             userName: '张鹏',
             mobile: '1111111111',
             state: '成功'
-          },
-          {
-            date: '22日',
-            time: '16:20',
-            picture: '//www.baidu.com/img/bd_logo1.png',
-            userName: '张鹏',
-            mobile: '1111111111',
-            state: '成功'
           }],
-        numberPeople: [50, 80, 40, 100, 180, 140, 270,220,260,290,300,320],
-        whatYear:'',
+        numberPeopleArr: [50, 80, 40, 100, 180, 140, 270,220,260,290,300,320],
+        timeSlotArr: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        whatYear:'Sun Jan 01 2017 00:00:00 GMT+0800',
         timeSlot:1,
         historyYear:'',
-        historyMouth: ''
+        historyMonth: '',
+        total: 500,
+        pageSize: 10,
+        currentPage: 1,
+        jumperToPage: 1,
       }
+    },
+    watch: {
+      historyYear (val) {
+        console.log(val)
+      },
+      historyMonth (val) {
+        console.log(val)
+      }
+    },
+    components: {
+      Pagination
     },
     methods: {
       // 折线图方法
       drawLine(){
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('myChart'))
+        myChart.showLoading();
+        setTimeout(function () {
+          myChart.hideLoading();
+        },2000)
+//        api.LineChart({whatYear:this.whatYear,timeSlot:this.timeSlot}).then(function (data) {
+//          console.log('成功')
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
         // 绘制图表
         myChart.setOption({
           title: {
@@ -182,7 +203,7 @@
             {
               type : 'category',
               boundaryGap : false,
-              data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+              data : this.timeSlotArr
             }
           ],
           yAxis : [
@@ -207,10 +228,22 @@
               areaStyle: {normal: {
                   type: 'default'
               }},
-              data:this.numberPeople
+              data:this.numberPeopleArr
             }
           ]
         })
+      },
+      // 分页方法
+      getPagination(currentPage, jumperToPage) {
+        this.currentPage = currentPage || 1
+        this.jumperToPage = jumperToPage || 1
+//        api.HistoryList({currentPage:this.currentPage,jumperToPage:this.jumperToPage}).then(function (data) {
+//          console.log('成功')
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
+        console.log(this.currentPage + '当前页')
+        console.log(this.jumperToPage + '跳转页')
       }
     },
     mounted() {
@@ -282,3 +315,5 @@
     }
   }
 </style>
+
+

@@ -31,5 +31,7 @@
     width: 80%;
     float: right;
     padding: 20px 30px;
+    max-height: 750px;
+    overflow-y: auto;
   }
 </style>

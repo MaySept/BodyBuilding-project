@@ -15,7 +15,7 @@
         align="center"
         min-width="120">
         <template scope="scope">
-          <img :src="scope.row.picture"  alt="" class="user-logo">
+          <img :src="scope.row.picture" alt="" class="user-logo">
         </template>
       </el-table-column>
       <el-table-column
@@ -42,7 +42,7 @@
         prop="remarks"
         label="备注"
         align="center"
-        min-width="120">
+        max-width="120">
       </el-table-column>
       <el-table-column
         label="编辑"
@@ -55,6 +55,8 @@
         </template>
       </el-table-column>
     </el-table>
+    <!--页脚分页-->
+    <Pagination @pagination="getPagination" :totalFather='total'></Pagination>
 
     <!--添加教练弹框-->
     <el-dialog
@@ -69,15 +71,18 @@
         :maxlength='11'
         :on-icon-click="handleIconClick">
       </el-input>
-      <div class="search-result">
+      <div class="search-result" v-if="coachInformation">
         <el-row>
           <el-col :span="4"><span><img :src="picture" alt=""></span></el-col>
           <el-col :span="4"><span class="lineHeight">{{userName}}</span></el-col>
           <el-col :span="4"><span class="lineHeight">{{gender}}</span></el-col>
         </el-row>
       </div>
+      <div class="search-result" v-if="noCoachInformation" style="height: 33px">
+        <p class="no-coachInformation">该手机号尚未注册ArcBody</p>
+      </div>
       <span slot="footer" class="dialog-footer">
-        <el-button @click="addCoach = false" class="add-btn" :disabled="true">添 加</el-button>
+        <el-button @click="addCoachBtn" class="preservation-btn" :disabled="disabled">添 加</el-button>
         <el-button @click="addCoach = false" class="cancel-btn">取 消</el-button>
       </span>
     </el-dialog>
@@ -114,6 +119,8 @@
 </template>
 
 <script>
+  import Pagination from '../../../.././components/pagination.vue'
+  import api from '../../../.././vuex/api'
   export default {
     data() {
       return {
@@ -142,13 +149,56 @@
         addCoach: false,
         remarksMessage:false,
         confirmDelete:false,
+        coachInformation: false,
+        disabled: true,
+        noCoachInformation: false,
         mobile: '',
         picture: '//www.baidu.com/img/bd_logo1.png',
         userName: '张鹏',
-        gender: '男'
+        gender: '男',
+        time: '',
+        total: 500,
+        pageSize: 10,
+        currentPage: 1,
+        jumperToPage: 1
       }
     },
+    watch: {
+      mobile(val) {
+        if(this.mobile.length === 11) {
+//          api.HistoryList({mobile:this.mobile}).then(function (data) {
+//            console.log('成功')
+//          }).catch(function (error) {
+//            console.log('失败')
+//          })
+          this.coachInformation = true
+          this.disabled = false
+        }else if(this.mobile.length === 0) {
+          this.coachInformation = false
+          this.noCoachInformation = false
+          this.disabled = true
+        }
+      }
+    },
+    components: {
+      Pagination
+    },
     methods: {
+      addCoachBtn() {
+//        if (this.coachData.indexOf(1) !== -1){
+//        }else {
+//          this.$message.error('您添加的教练已存在');
+//        }
+        this.coachData.push({
+          id: 1,
+          picture: '//www.baidu.com/img/bd_logo1.png',
+          userName: '张鹏',
+          gender: '男',
+          time: this.$Common.getNewDate()
+        })
+
+        this.addCoach = false
+      },
       deleteCoach(index, rows) {
         this.confirmDelete = true
         rows.splice(index, 1);
@@ -159,8 +209,19 @@
         this.remarksMessage = true
       },
       confirmDeleteCoach(index, rows) {
-
         this.confirmDelete = false
+      },
+      // 分页方法
+      getPagination(currentPage, jumperToPage) {
+        this.currentPage = currentPage || 1
+        this.jumperToPage = jumperToPage || 1
+//        api.HistoryList({currentPage:this.currentPage,jumperToPage:this.jumperToPage}).then(function (data) {
+//          console.log('成功')
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
+        console.log(this.currentPage + '当前页')
+        console.log(this.jumperToPage + '跳转页')
       }
     }
   }
@@ -199,6 +260,10 @@
     }
     .el-dialog__body {
       padding: 24px 20px;
+    }
+    .no-coachInformation {
+      line-height: 37px;
+      color: red;
     }
   }
 </style>
