@@ -9,9 +9,9 @@
         width="20"
         trigger="click"
         >
-        <div class="signOut-btn" style="cursor: pointer;" @click="signOut">退出</div>
+        <div style="cursor: pointer;" @click="signOut">退出</div>
       </el-popover>
-      <span v-popover:popover>绿城健身房-HZ</span>
+      <el-button v-popover:popover>绿城健身房-HZ</el-button>
     </div>
   </div>
 </template>
@@ -35,10 +35,6 @@
     width: 80%;
     height: 80px;
     padding: 25px 50px 25px 30px;
-    h4 {
-      display: inline-block;
-      font-size: 18px;
-    }
     .user-name {
       float: right;
       width: 180px;
@@ -58,6 +54,9 @@
         margin-left: 5px;
         cursor: pointer;
       }
+    }
+    .el-popover {
+      min-width:97px
     }
   }
 

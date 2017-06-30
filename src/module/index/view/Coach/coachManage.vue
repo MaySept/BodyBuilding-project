@@ -42,7 +42,8 @@
         prop="remarks"
         label="备注"
         align="center"
-        max-width="120">
+        max-width="120"
+        max-height="50">
       </el-table-column>
       <el-table-column
         label="编辑"
@@ -51,7 +52,7 @@
         <template scope="scope">
           <span @click="editRemarks(scope.$index, scope.row.id)"><i class="el-icon-edit"></i></span>
           <span class="line">|</span>
-          <span @click="deleteCoach(scope.$index, coachData)"><i class="el-icon-delete"></i></span>
+          <span @click="deleteCoach(scope.$index, scope.row.id)"><i class="el-icon-delete"></i></span>
         </template>
       </el-table-column>
     </el-table>
@@ -93,10 +94,10 @@
       :visible.sync="remarksMessage"
       size="tiny"
       :before-close="handleClose">
-      <el-input v-model="remarks" placeholder="请填写备注信息，如真实姓名"></el-input>
+      <el-input v-model="modifyRemarks" placeholder="请填写备注信息，如真实姓名"></el-input>
       <div style="height: 30px"></div>
       <span slot="footer" class="dialog-footer">
-    <el-button @click="remarksMessage = false" class="preservation-btn">保 存</el-button>
+    <el-button @click="confirmRemark" class="preservation-btn">保 存</el-button>
     <el-button @click="remarksMessage = false" class="cancel-btn">取 消</el-button>
   </span>
     </el-dialog>
@@ -125,21 +126,21 @@
     data() {
       return {
         coachData:[{
-          id:1,
+          id:'id1',
           picture: '//www.baidu.com/img/bd_logo1.png',
           userName: '张鹏1',
           gender: '男',
           time: '2017-05-03',
           remarks: '皮皮瞎'
         },{
-          id:2,
+          id:'id2',
           picture: '//www.baidu.com/img/bd_logo1.png',
           userName: '张鹏2',
           gender: '男',
           time: '2017-05-03',
           remarks: '皮皮瞎'
         },{
-          id:3,
+          id:'id3',
           picture: '//www.baidu.com/img/bd_logo1.png',
           userName: '张鹏3',
           gender: '男',
@@ -152,6 +153,7 @@
         coachInformation: false,
         disabled: true,
         noCoachInformation: false,
+        $id: '',
         mobile: '',
         picture: '//www.baidu.com/img/bd_logo1.png',
         userName: '张鹏',
@@ -160,13 +162,14 @@
         total: 500,
         pageSize: 10,
         currentPage: 1,
-        jumperToPage: 1
+        jumperToPage: 1,
+        modifyRemarks: ''
       }
     },
     watch: {
       mobile(val) {
         if(this.mobile.length === 11) {
-//          api.HistoryList({mobile:this.mobile}).then(function (data) {
+//          api.SearchCoach({mobile:this.mobile}).then(function (data) {
 //            console.log('成功')
 //          }).catch(function (error) {
 //            console.log('失败')
@@ -196,26 +199,55 @@
           gender: '男',
           time: this.$Common.getNewDate()
         })
-
+        this.$message({
+          message: '添加成功',
+          type: 'success'
+        });
         this.addCoach = false
       },
-      deleteCoach(index, rows) {
-        this.confirmDelete = true
-        rows.splice(index, 1);
-        console.log(rows)
-      },
       editRemarks(index, id) {
-        console.log(id)
+        this.$id = id
         this.remarksMessage = true
       },
+      confirmRemark() {
+//        api.ConfirmRemarks({modifyRemarks:this.modifyRemarks}).then(function (data) {
+//          console.log('成功')
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
+        this.coachData.forEach( (item) => {
+          if(item.id === this.$id) {
+            item.remarks = this.modifyRemarks
+          }
+        })
+        this.remarksMessage = false
+      },
+      deleteCoach(index, id) {
+        this.$id = id
+        this.confirmDelete = true
+      },
       confirmDeleteCoach(index, rows) {
+//        api.RemoveCoach({coachId:this.$id}).then(function (data) {
+//          console.log('成功')
+//        }).catch(function (error) {
+//          console.log('失败')
+//        })
+        this.coachData.forEach( (item, index) => {
+          if(item.id === this.$id) {
+            this.coachData.splice(index, 1)
+          }
+        })
+        this.$message({
+          message: '删除成功',
+          type: 'success'
+        });
         this.confirmDelete = false
       },
       // 分页方法
       getPagination(currentPage, jumperToPage) {
         this.currentPage = currentPage || 1
         this.jumperToPage = jumperToPage || 1
-//        api.HistoryList({currentPage:this.currentPage,jumperToPage:this.jumperToPage}).then(function (data) {
+//        api.CoachManage({currentPage:this.currentPage,jumperToPage:this.jumperToPage}).then(function (data) {
 //          console.log('成功')
 //        }).catch(function (error) {
 //          console.log('失败')
@@ -223,6 +255,9 @@
         console.log(this.currentPage + '当前页')
         console.log(this.jumperToPage + '跳转页')
       }
+    },
+    created() {
+      this.getPagination()
     }
   }
 </script>
@@ -257,9 +292,6 @@
       .lineHeight {
         line-height: 51px;
       }
-    }
-    .el-dialog__body {
-      padding: 24px 20px;
     }
     .no-coachInformation {
       line-height: 37px;

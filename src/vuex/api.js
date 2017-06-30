@@ -78,7 +78,7 @@ export default {
       })
     },
     //--------------------------------------------------------------------------------------------
-    /*历史记录分页信息*/
+    /*历史记录分页初始列表信息*/
     HistoryList: function (params) {
       return new Promise(function (resolve, reject) {
         axios.get('center/getNotification.json',params).then(function (res) {
@@ -102,8 +102,44 @@ export default {
         })
       })
     },
+    /*教练管理初始列表信息*/
+    CoachManage: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
     /*手机号查询教练信息*/
-    searchCoach: function (params) {
+    SearchCoach: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*修改教练备注信息*/
+    ConfirmRemarks: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*删除教练*/
+    RemoveCoach: function (params) {
       return new Promise(function (resolve, reject) {
         axios.get('center/getNotification.json',params).then(function (res) {
           if (res.status >= 200 && res.status < 300) {
@@ -115,6 +151,55 @@ export default {
       })
     },
 
+
+    //------------------------------------------------------------------------------------------
+     /*修改用户名*/
+    ModifyName: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*修改密码*/
+    ModifyPassword: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    /*修改城市*/
+    ModifyCity: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+    ModifyMailbox: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
 
 
 

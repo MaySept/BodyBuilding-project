@@ -9,7 +9,7 @@
           </el-col>
           <el-col :span="16">
             <div class="system-name clearFix">
-              <p>ArcBody1</p>
+              <p>ArcBody</p>
               <p>管理中心</p>
             </div>
           </el-col>
@@ -19,7 +19,7 @@
              class="el-menu-vertical-demo"
              @select="handleSelect"
              theme="dark">
-      <router-link to="/chartData">
+      <router-link to="/">
         <el-menu-item index="1"><i class="el-icon-message"></i>使用数据</el-menu-item>
       </router-link>
       <router-link to="/coachManage">
@@ -39,19 +39,24 @@
   export default {
     data() {
       return {
-        indexPath:'2'
+        indexPath:'1',
+        transferIndex: ''
       }
     },
     methods: {
       handleSelect(index) {
-        console.log(index);
+//          this.$store.dispatch('sideIndex',index) 往vuex实体里面赋值
+//          console.log(this.$store.state.sidebar.transferIndex)
+//          this.$store.getters.getTransferIndex (computed) 引用
+//          this.$store.state.sidebar.transferIndex 直接引用的写法（data）
+        sessionStorage.setItem('key',index)
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
     },
     created() {
-      this.indexPath = '3'
+      this.indexPath = sessionStorage.getItem("key") || '1'
     }
   }
 </script>

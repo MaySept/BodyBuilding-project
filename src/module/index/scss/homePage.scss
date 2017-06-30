@@ -28,7 +28,12 @@
   border-color: #02d1b1;
 }
 .el-dialog__footer {
-  padding: 10px 20px 20px;
+  padding: 10px 39px 20px;
+}
+.el-dialog__body {
+  padding: 30px 37px;
+  color: #48576a;
+  font-size: 14px;
 }
 /*头部标题*/
 .head-title {
@@ -37,5 +42,14 @@
   top: 38px;
   font-size: 21px;
   color: grey;
+}
+.error-text {
+  color: #ff4949;
+  font-size: 12px;
+  line-height: 1;
+  padding-top: 4px;
+  position: absolute;
+  top: 55%;
+  left: 22px;
 }
 

@@ -248,6 +248,9 @@
     },
     mounted() {
       this.drawLine()
+    },
+    created() {
+      this.getPagination()
     }
   }
 </script>

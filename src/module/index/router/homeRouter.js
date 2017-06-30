@@ -6,7 +6,7 @@ import {router} from 'js/base' //引入路由组件
 export default new router ({
   routes:[
     {
-      path: '/chartData',
+      path: '/',
       component:resolve => {require(['../view/Chart/chartData.vue'], resolve)}
     },
     {

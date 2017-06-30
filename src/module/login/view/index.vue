@@ -38,7 +38,7 @@
                   </el-input>
                 </el-form-item>
                 <el-form-item prop="password">
-                  <el-input placeholder="请输入密码" v-model="registerFrom.password">
+                  <el-input placeholder="请输入密码" type="password" v-model="registerFrom.password">
                     <template slot="prepend">密&nbsp;&nbsp;&nbsp;码</template>
                   </el-input>
                 </el-form-item>
