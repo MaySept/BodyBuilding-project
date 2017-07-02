@@ -46,6 +46,13 @@
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
           },
+          label:{
+            normal:{
+              show:true,
+              formatter:'{b}({d}%)'
+            }
+
+          },
           color:['green','red'],
           series : [
             {
