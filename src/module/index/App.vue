@@ -19,6 +19,11 @@
     components: {
       SideBar,
       headNavigation
+    },
+    created() {
+      if(!sessionStorage.getItem("uid")) {
+        window.location.href = 'http://localhost:8080/module/login.html#/login/loginView'
+      }
     }
   }
 </script>

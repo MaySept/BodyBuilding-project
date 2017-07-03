@@ -30,5 +30,8 @@ export const DESTINATION_GET_INDEX = 'DESTINATION_GET_INDEX'
 // 待点评
 export const BECOMMENT_GET_LIST = 'BECOMMENT_GET_LIST'
 export const BECOMMENT_LIST_CURRENTPAGE = 'BECOMMENT_LIST_CURRENTPAGE'
-// ...
+// 侧边栏index
 export const INDEX_PATH = 'INDEX_PATH'
+// 登录
+export const USER_ID = 'USER_ID'
+export const USER_Name = 'USER_Name'

@@ -49,14 +49,14 @@
 //          console.log(this.$store.state.sidebar.transferIndex)
 //          this.$store.getters.getTransferIndex (computed) 引用
 //          this.$store.state.sidebar.transferIndex 直接引用的写法（data）
-        sessionStorage.setItem('key',index)
+        sessionStorage.setItem('path',index)
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
       }
     },
     created() {
-      this.indexPath = sessionStorage.getItem("key") || '1'
+      this.indexPath = sessionStorage.getItem("path") || '1'
     }
   }
 </script>

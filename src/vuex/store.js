@@ -10,5 +10,5 @@ export default new Vuex.Store({
         login,
         sidebar
     },
-    strict: process.env.NODE_ENV !== 'production'// 线上环境关掉
+    // strict: process.env.NODE_ENV !== 'production'// 线上环境关掉
 })

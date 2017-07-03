@@ -201,6 +201,20 @@ export default {
       })
     },
 
+    //------------------------------------------------------------------------------------------
+    /*登录注册*/
+    GetLogin: function (params) {
+      return new Promise(function (resolve, reject) {
+        axios.get('center/getNotification.json',params).then(function (res) {
+          if (res.status >= 200 && res.status < 300) {
+            resolve(res.data)
+          }
+        }).catch((error) => {
+          reject(error)
+        })
+      })
+    },
+
 
 
 
@@ -220,7 +234,7 @@ export default {
     /**
      * 登录
      */
-    getLogin: function (params, cb) {
+   /* getLogin: function (params, cb) {
         axios.get(url + 'user/login.json?t=' + new Date() * 1 + '&callback=?').then(function (res) {
             if (res.status >= 200 && res.status < 300) {
                 cb(res.data)
@@ -228,7 +242,7 @@ export default {
         }).catch((error) => {
             return Promise.reject(error)
         })
-    },
+    },*/
     /**
      * 获取购物车数量
      */

@@ -2,16 +2,16 @@
   <div id="head-navigation" class="clearFix">
     <div class="user-name clearFix">
       <img src=".././assets/logo.png" alt="">
-      <el-popover
-        ref="popover"
-        placement="bottom-end"
-        title=""
-        width="20"
-        trigger="click"
-        >
-        <div style="cursor: pointer;" @click="signOut">退出</div>
-      </el-popover>
-      <el-button v-popover:popover>绿城健身房-HZ</el-button>
+      <el-dropdown @command="handleCommand"
+                   trigger="click"
+      >
+        <span class="el-dropdown-link">
+          {{userName}}<i class="el-icon-caret-bottom el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="a" style="line-height: 25px">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -20,12 +20,17 @@
   export default {
     data() {
       return {
+        userName: '绿城剑健身房-HZ'
       }
     },
     methods: {
-      signOut() {
-        console.log('123222')
+      handleCommand(command) {
+        sessionStorage.removeItem('uid')
+        window.location.href='http://localhost:8080/module/login.html#/login/loginView'
       }
+    },
+    created() {
+      this.userName = sessionStorage.getItem("uid")
     }
   }
 </script>
@@ -55,8 +60,8 @@
         cursor: pointer;
       }
     }
-    .el-popover {
-      min-width:97px
+    .el-dropdown-menu__item {
+      line-height: 20px;
     }
   }
 

@@ -120,7 +120,7 @@
             // 验证成功后操作
 //            api.SendMail(this.mailForm).then(function (data) {
 //              console.log('成功')
-//              this.$message.error('您输入的序列号不存在');
+//              this.$message.error('您输入的序列号不存在')
 //            }).catch(function (error) {
 //              console.log('失败')
 //            })
@@ -133,7 +133,6 @@
       getCityData(prov, city) {
         this.registerFrom.selectProv = prov
         this.registerFrom.selectCity = city
-
       },
       nextStep(formName) {
         this.$refs[formName].validate((valid) => {

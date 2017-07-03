@@ -49,9 +49,9 @@
           label:{
             normal:{
               show:true,
-              formatter:'{b}({d}%)'
+              formatter:'{b}\n ({d}%)',
+              position:'middle'
             }
-
           },
           color:['green','red'],
           series : [

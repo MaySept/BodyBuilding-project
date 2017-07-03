@@ -3,33 +3,40 @@ import api from '../api'
 
 //state 代表数据实体
 const state = {
-    loginSuccess: false,
-    errorMessage: ''
+    uid: '15384077817',
+    userName: '张鹏'
 }
 
 //action 可以包含异步操作的状态变更
 const actions = {
-    goLogin: function ({commit}, params) {
+    getLoginId: function ({commit}, params) {
         return new Promise((resolve, reject) => {
-            api.getLogin(params, function (res) {
-                commit(types.LOGIN_IS_SUCCESS, res);
-                resolve(res)
-            })
+          commit(types.USER_ID, params);
+          resolve(params)
         })
+    },
+    getLoginName: function ({commit}, params) {
+      return new Promise((resolve, reject) => {
+        commit(types.USER_ID, params);
+        resolve(params)
+      })
     }
 }
 
 //getters 代表数据实体计算属性 能够根据state动态变更值
 const getters = {
-    getLoginSuccess: state => state.loginSuccess,
-    getLoginMessage: state => state.errorMessage
+  getUid: state => state.uid,
+  getUserName: state => state.userName,
+
 }
 
 //mutations 同步状态变更 直接修改状态值
 const mutations = {
-    [types.LOGIN_IS_SUCCESS] (state, res) {
-        state.loginSuccess = res.error_code === '0000'
-        state.errorMessage = res.error_msg
+    [types.USER_ID] (state, val) {
+        state.uid = val
+    },
+    [types.USER_Name] (state, val) {
+      state.userName = val
     }
 }
 
