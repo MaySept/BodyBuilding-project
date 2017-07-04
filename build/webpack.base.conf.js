@@ -13,7 +13,7 @@ var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 var projectRoot = path.resolve(__dirname, '../')
 var srcDir = path.resolve(__dirname, '../src')
-var entries = utils.getEntries(srcDir + '/module/**/*.js')
+var entries = utils.getEntries(srcDir + '/module/*/*.js')
 var libs=path.resolve(__dirname, '../static/js/lib')
 //entries['flexible'] = path.resolve(__dirname, libs+'/flexible/flexible.js')
 var autoprefixerConf = autoprefixer({ browsers: ['last 2 versions','Android >= 4.0','iOS >= 6'] });

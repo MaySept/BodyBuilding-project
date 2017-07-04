@@ -4,14 +4,14 @@
 .add-btn {
   color: #ffffff;
   background-color: darkgrey;
-  width: 150px;
+  width: 135px;
   float: left;
   border-radius: 20px;
 }
 .cancel-btn {
   color: #02d1b1;
   border-color: #02d1b1;
-  width: 150px;
+  width: 135px;
   border-radius: 20px;
 }
 .preservation-btn {
@@ -31,7 +31,7 @@
   padding: 10px 39px 20px;
 }
 .el-dialog__body {
-  padding: 30px 37px;
+  padding: 30px 37px 30px 37px;
   color: #48576a;
   font-size: 14px;
 }
@@ -51,5 +51,9 @@
   position: absolute;
   top: 55%;
   left: 22px;
+}
+/*弹框*/
+.el-dialog--tiny {
+  width: 370px;
 }
 

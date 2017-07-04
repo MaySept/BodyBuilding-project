@@ -93,6 +93,7 @@ exports.getEntries = function (globPath,type) {
    * 读取src目录,并进行路径裁剪
    */
   glob.sync(globPath).forEach(function (entry) {
+    console.log(entry)
     /**
      * path.basename 提取出用 ‘/' 隔开的path的最后一部分，除第一个参数外其余是需要过滤的字符串
      * path.extname 获取文件后缀
@@ -118,6 +119,7 @@ exports.getEntries = function (globPath,type) {
     else{
         //js以模块文件作为输出,比如indx.js
         var basename = path.basename(entry, path.extname(entry));
+
         tmp = entry.split('/').splice(-3);
         pathname = tmp.splice(1, 1);
         entries[pathname] = entry;
@@ -130,5 +132,6 @@ exports.getEntries = function (globPath,type) {
   });
   // console.log(entries);
   // 获取的主入口如下： { main: './src/module/index/main.js', test: './src/module/test/test.js' }
+  console.log(entries)
   return entries;
 }

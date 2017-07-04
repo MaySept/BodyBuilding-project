@@ -35,3 +35,5 @@ export const INDEX_PATH = 'INDEX_PATH'
 // 登录
 export const USER_ID = 'USER_ID'
 export const USER_Name = 'USER_Name'
+// 忘记用户名
+export  const USER_NAME = 'USER_NAME'

@@ -51,10 +51,13 @@
               })
               return false
             }else {
+              this.$message({
+                message: '密码修改成功',
+                type: 'success'
+              });
               this.$router.push({ path: '/login/loginView'})
 //              api.ResetPassword(this.mailForm).then(function (data) {
 //                console.log('成功')
-//                this.$message.error('您输入的序列号不存在');
 //              }).catch(function (error) {
 //                console.log('失败')
 //              })

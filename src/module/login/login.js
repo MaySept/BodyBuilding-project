@@ -1,5 +1,5 @@
 import { Vue, Common, i18n} from 'js/base'
-import  router from './router'
+import  router from './router/loginRouter.js'
 import store from '../../vuex/store'
 import app from './App'
 import ElementUI from 'element-ui'

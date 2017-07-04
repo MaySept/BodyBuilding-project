@@ -7,7 +7,7 @@ module.exports = {
         //index: path.resolve(__dirname, '../dist/homePage.html'),
         assetsRoot: path.resolve(__dirname, '../dist'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/',
+        assetsPublicPath: '../',
         //assetsPublicPath: 'https://luchanan.github.io/vue2.0-multi-page-dist/',
         productionSourceMap: false,
         // Gzip off by default as many popular static hosts such as

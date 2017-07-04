@@ -2,7 +2,7 @@
   <div id="showUser">
     <div class="input-content">
       <p>您的用户名是：</p>
-      <p>绿城健身房-HZ</p>
+      <p>{{name}}</p>
       <div class="login-btn">
         <router-link to="/login/loginView" class="text-style">
           返回登录
@@ -15,7 +15,12 @@
 <script>
   export default {
     data() {
-      return {}
+      return {
+        name: ''
+      }
+    },
+    created() {
+      this.name = this.$store.state.showUserName.showUserName
     }
   }
 </script>

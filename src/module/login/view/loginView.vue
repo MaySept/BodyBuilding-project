@@ -68,7 +68,7 @@
 <style lang="scss">
   #login-view {
     .el-input-group {
-      margin: 10px auto;
+      margin: 5px auto;
     }
     .login-btn {
       a {

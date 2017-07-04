@@ -11,9 +11,9 @@
           </el-tab-pane>
 
           <el-tab-pane label="注册" name="second">
-            <div class="input-content" v-if="registerStepOne" style="margin-top: 10px">
+            <div class="input-content" v-if="registerStepOne">
               <!--输入序列号-->
-              <el-form ref="serialNumFrom" :model="serialNumFrom" :rules="rules">
+              <el-form ref="serialNumFrom" :model="serialNumFrom" :rules="rules" class="register-step">
                 <el-form-item prop="serialNumber">
                   <el-input placeholder="请在机身xxx处寻找" v-model="serialNumFrom.serialNumber">
                     <template slot="prepend">序列号</template>
@@ -26,7 +26,7 @@
             </div>
             <!--注册表单-->
             <div class="input-content" v-if="registerStepTwo">
-              <el-form ref="registerFrom" :model="registerFrom" :rules="rules">
+              <el-form ref="registerFrom" :model="registerFrom" :rules="rules" class="register-step">
                 <el-form-item prop="name">
                   <el-input placeholder="建议填写健身房名称" v-model="registerFrom.name">
                     <template slot="prepend">用户名</template>
@@ -84,7 +84,8 @@
             { required: true, message: '请填写用户名', trigger: 'blur' }
           ],
           mailbox: [
-            { required: true, message: '请填写邮箱地址', trigger: 'blur' }
+            { required: true, message: '请填写邮箱地址', trigger: 'blur' },
+            { pattern: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, message: '请输入正确的邮箱地址', trigger: 'blur' }
           ],
           password: [
             { required: true, message: '请填写密码', trigger: 'blur' }
@@ -117,6 +118,9 @@
               message: '注册成功',
               type: 'success'
             })
+            setTimeout(function () {
+              location.reload()
+            },1000)
             // 验证成功后操作
 //            api.SendMail(this.mailForm).then(function (data) {
 //              console.log('成功')
@@ -194,6 +198,11 @@
     #citySelect {
       margin-top: 22px;
       position: relative;
+    }
+    .register-step {
+      .el-form-item__error {
+        left: 63px;
+      }
     }
   }
 </style>

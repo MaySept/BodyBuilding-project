@@ -1,4 +1,4 @@
-var path = require('path')
+const path = require('path')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
 var config = require('../config')

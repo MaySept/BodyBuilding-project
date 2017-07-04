@@ -95,7 +95,6 @@
       size="tiny"
       :before-close="handleClose">
       <el-input v-model="modifyRemarks" placeholder="请填写备注信息，如真实姓名"></el-input>
-      <div style="height: 30px"></div>
       <span slot="footer" class="dialog-footer">
     <el-button @click="confirmRemark" class="preservation-btn">保 存</el-button>
     <el-button @click="remarksMessage = false" class="cancel-btn">取 消</el-button>
@@ -109,11 +108,10 @@
       size="tiny"
       :before-close="handleClose">
       <span>确定将该教练从列表中删除吗？</span>
-      <div style="height: 30px"></div>
       <span slot="footer" class="dialog-footer">
-    <el-button @click="confirmDeleteCoach" class="preservation-btn">确 定</el-button>
-    <el-button @click="confirmDelete = false" class="cancel-btn">取 消</el-button>
-  </span>
+        <el-button @click="confirmDeleteCoach" class="preservation-btn">确 定</el-button>
+        <el-button @click="confirmDelete = false" class="cancel-btn">取 消</el-button>
+      </span>
     </el-dialog>
 
   </div>

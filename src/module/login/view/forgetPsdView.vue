@@ -44,7 +44,6 @@
             this.$router.push({ path: '/login/openMailboxView'})
 //            api.SendMail(this.mailForm).then(function (data) {
 //              console.log('成功')
-//              this.$message.error('您输入的序列号不存在');
 //            }).catch(function (error) {
 //              console.log('失败')
 //            })
@@ -64,6 +63,5 @@
   #forgetPsdView .input-content > p {
     font-size: 10px;
     text-align: left;
-    margin-bottom: 15px;
   }
 </style>
