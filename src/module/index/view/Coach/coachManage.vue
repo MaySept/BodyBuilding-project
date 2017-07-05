@@ -283,6 +283,7 @@
       height: 50px;
       margin-top: 10px;
       overflow: hidden;
+      margin-bottom: -30px;
       img {
         width: 40px;
         height: 40px;

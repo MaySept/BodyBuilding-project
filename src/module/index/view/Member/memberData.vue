@@ -26,7 +26,6 @@
   export default {
     data() {
       return {
-        man: '40%',
         sexProportion:[
           {value:30, name:'男性'},
           {value:50, name:'女性'}
@@ -40,6 +39,7 @@
         sexRatio.setOption({
           title : {
             text: '男女比例',
+            top: 30,
             x:'center'
           },
           tooltip : {
@@ -47,20 +47,52 @@
             formatter: "{a} <br/>{b} : {c} ({d}%)"
           },
           label:{
+            // 普通模式下 文本标签样式
             normal:{
               show:true,
-              formatter:'{b}\n ({d}%)',
-              position:'middle'
+              formatter:'{d}% \n{b} ',
+              position:'outside',
+              textStyle: {
+                color: '#000'
+              }
+            },
+            // 高亮模式下 文本标签样式
+            emphasis: {
+              show:true,
+              formatter:'{d}% \n{b} ',
+              position:'outside',
+              textStyle: {
+                color: '#000',
+                fontSize: 15
+              }
             }
           },
-          color:['green','red'],
+          color:['#99FFFF','#FF99FF'],
+
           series : [
             {
               name: '所占比例',
               type: 'pie',
               radius : '52%',
               center: ['50%', '60%'],
-              data: this.sexProportion
+              data: this.sexProportion,
+              // 标注线
+              labelLine: {
+                normal: {
+                  lineStyle: {
+                    type: 'solid',
+                    smooth: true
+                  }
+                }
+              },
+              // 描边
+              itemStyle: {
+                normal: {
+                  borderWidth: 2,
+                  borderColor: '#fff'
+
+                }
+              }
             }
           ]
         }

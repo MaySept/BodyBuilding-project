@@ -1,7 +1,8 @@
 <template>
   <div id="homePage">
     <SideBar></SideBar>
-    <headNavigation></headNavigation>
+    <HeadNavigation></HeadNavigation>
+    <Loading></Loading>
     <div class="details-page">
       <router-view></router-view>
     </div>
@@ -10,7 +11,8 @@
 
 <script>
   import SideBar from '../.././components/sidebar.vue'
-  import headNavigation from '../.././components/header.vue'
+  import HeadNavigation from '../.././components/header.vue'
+  import Loading from '../.././components/loading.vue'
   export default {
     data() {
       return {
@@ -18,7 +20,8 @@
     },
     components: {
       SideBar,
-      headNavigation
+      HeadNavigation,
+      Loading
     },
     created() {
       if(!sessionStorage.getItem("uid")) {

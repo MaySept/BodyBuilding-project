@@ -39,8 +39,7 @@
   export default {
     data() {
       return {
-        indexPath:'1',
-        transferIndex: ''
+        indexPath:'1'
       }
     },
     methods: {
@@ -57,6 +56,24 @@
     },
     created() {
       this.indexPath = sessionStorage.getItem("path") || '1'
+
+      // 路由初始化
+      switch (this.indexPath) {
+        case '1':
+          this.$router.push({ path: '/'})
+          break;
+        case '2':
+          this.$router.push({ path: '/coachManage'})
+          break;
+        case '3':
+          this.$router.push({ path: '/memberData'})
+          break;
+        case '4':
+          this.$router.push({ path: '/setting'})
+          break;
+      }
+
+
     }
   }
 </script>

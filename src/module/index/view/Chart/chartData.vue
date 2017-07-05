@@ -138,7 +138,7 @@
         timeSlotArr: ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
         whatYear:'Sun Jan 01 2017 00:00:00 GMT+0800',
         timeSlot:1,
-        historyYear:'',
+        historyYear:'2017',
         historyMonth: '',
         total: 500,
         pageSize: 10,
@@ -162,10 +162,10 @@
       drawLine(){
         // 基于准备好的dom，初始化echarts实例
         let myChart = this.$echarts.init(document.getElementById('myChart'))
-        myChart.showLoading();
+       /* myChart.showLoading();
         setTimeout(function () {
           myChart.hideLoading();
-        },2000)
+        },2000)*/
 //        api.LineChart({whatYear:this.whatYear,timeSlot:this.timeSlot}).then(function (data) {
 //          console.log('成功')
 //        }).catch(function (error) {
@@ -173,11 +173,23 @@
 //        })
         // 绘制图表
         myChart.setOption({
+          // 设置title属性
           title: {
-            text: '人次'
+            left:10,
+            top:30,
+            text: '(人次)',
+            textStyle: {
+              color: '#000',
+              fontWeight: 'normal',
+              fontSize: 14
+            }
           },
           tooltip : {
             trigger: 'axis',
+            // 提示框文字显示
+            formatter:this.historyYear+"年{b}<br/>{c}人次",
+            // 提示框颜色
+            backgroundColor:'#99FFCC',
             axisPointer: {
               type: 'cross',
               label: {
@@ -189,6 +201,7 @@
             data:['使用人次']
           },
           toolbox: {
+            show: false,
             feature: {
               saveAsImage: {}
             }
@@ -217,7 +230,8 @@
               type:'line',
               stack: '总量',
               itemStyle:{
-                normal:{color:'green'}
+                // 折线颜色
+                normal:{color:'#33FF00'}
               },
               label: {
                 normal: {
@@ -225,9 +239,13 @@
                   position: 'top'
                 }
               },
-              areaStyle: {normal: {
+              areaStyle: {
+                normal: {
+                  // 图形区域颜色
+                  color: '#CCFFCC',
                   type: 'default'
-              }},
+                }
+              },
               data:this.numberPeopleArr
             }
           ]
