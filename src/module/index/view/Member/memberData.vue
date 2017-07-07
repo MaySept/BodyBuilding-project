@@ -90,7 +90,6 @@
                 normal: {
                   borderWidth: 2,
                   borderColor: '#fff'
-
                 }
               }
             }

@@ -19,7 +19,7 @@ var libs=path.resolve(__dirname, '../static/js/lib')
 var autoprefixerConf = autoprefixer({ browsers: ['last 2 versions','Android >= 4.0','iOS >= 6'] });
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir) //__dirname 指向当前目录执行脚本
 }
 
 
@@ -27,9 +27,9 @@ module.exports = {
     entry: entries,
 
     output: {
-        path: config.build.assetsRoot,
+        path: config.build.assetsRoot, // 打包后文件存放的地方
         publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-        filename: '[name].js'
+        filename: '[name].js' // 打包后文件名
     },
 
     resolve: {
@@ -58,10 +58,10 @@ module.exports = {
     module: {
         preLoaders: [
             {
-                test: /\.vue$/,
-                loader: 'eslint',
-                include: projectRoot,
-                exclude: /node_modules/
+                test: /\.vue$/, // 一个处理loaders所处理文件的拓展名的正则表达式
+                loader: 'eslint', // loader的名称
+                include: projectRoot, // 手动添加必须处理的文件
+                exclude: /node_modules/ // 屏蔽不需处理文件
             },
             {
                 test: /\.js$/,
@@ -95,7 +95,7 @@ module.exports = {
                 loader: 'json'
             },
             /*{
-                test: /\.(css|scss)$/,
+                test: /\.(css|scss)$/, // 感叹号的作用在于使同一文件能够使用不同类型的loader
                 loader: "style!css!postcss!sass"
             },*/
             {

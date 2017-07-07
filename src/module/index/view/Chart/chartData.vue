@@ -6,13 +6,13 @@
       <el-tab-pane label="使用人次" name="first">
         <el-row class="data-overView">
           <el-col :span="8">
-            <p>当月使用人次 <span>17</span></p>
+            <p>当月使用人次 <span>{{monthPerson}}</span></p>
           </el-col>
           <el-col :span="8">
-            <p>总计使用人次 <span>270</span></p>
+            <p>总计使用人次 <span>{{totalPerson}}</span></p>
           </el-col>
           <el-col :span="8">
-            <p><span>40</span><span>%</span> 的本机用户已注册</p>
+            <p><span>{{percentage}}</span><span>%</span> 的本机用户已注册</p>
           </el-col>
         </el-row>
         <div class="number-chart">
@@ -63,7 +63,9 @@
         <el-table
           :data="tableData"
           stripe
-          style="width: 100%">
+          style="width: 100%"
+          v-loading="loading"
+        >
           <el-table-column
             prop="date"
             label="日期"
@@ -117,6 +119,7 @@
   export default {
     data() {
       return {
+        loading: false,
         activeName: 'first',
         tableData: [{
           date: '22日',
@@ -140,6 +143,9 @@
         timeSlot:1,
         historyYear:'2017',
         historyMonth: '',
+        monthPerson: 17,
+        totalPerson: 270,
+        percentage: 40,
         total: 500,
         pageSize: 10,
         currentPage: 1,
@@ -193,6 +199,7 @@
             axisPointer: {
               type: 'cross',
               label: {
+                // 坐标轴hover 标注颜色
                 backgroundColor: '#6a7985'
               }
             }
@@ -265,7 +272,9 @@
       }
     },
     mounted() {
-      this.drawLine()
+      this.$nextTick(() => {
+        this.drawLine()
+      })
     },
     created() {
       this.getPagination()

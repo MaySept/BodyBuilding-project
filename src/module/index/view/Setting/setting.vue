@@ -4,7 +4,7 @@
     <div class="setting-content">
       <el-row>
         <el-col :span="5">用户名</el-col>
-        <el-col :span="5" class="text-style">绿城健身房-HZ</el-col>
+        <el-col :span="5" class="text-style">{{ userName }}</el-col>
         <el-col :span="14"><el-button class="btn" @click="modifyName = true">修改</el-button></el-col>
       </el-row>
       <el-row>
@@ -14,12 +14,12 @@
       </el-row>
       <el-row>
         <el-col :span="5">所在城市</el-col>
-        <el-col :span="5" class="text-style">浙江省&nbsp;&nbsp; 杭州市</el-col>
+        <el-col :span="5" class="text-style">{{ provName }}&nbsp;&nbsp; {{ cityName }}</el-col>
         <el-col :span="14"><el-button class="btn" @click="modifyCity = true">修改</el-button></el-col>
       </el-row>
       <el-row>
         <el-col :span="5">注册邮箱</el-col>
-        <el-col :span="5" class="text-style">wqwe@163.com</el-col>
+        <el-col :span="5" class="text-style">{{ mailboxName }}</el-col>
         <el-col :span="14"><el-button class="btn" @click="modifyMailbox = true">修改</el-button></el-col>
       </el-row>
     </div>
@@ -83,6 +83,7 @@
 
 <script>
   import citySelect from '../../../.././components/citySelect.vue'
+  const mail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/
   export default {
     data() {
       return {
@@ -90,7 +91,10 @@
         modifyPassword: false,
         modifyCity: false,
         modifyMailbox:false,
-        userName: '',
+        userName: '绿城健身房-HZ',
+        provName: '浙江省',
+        cityName: '杭州市',
+        mailboxName: 'qwe@qwe.com',
         selectProv: '',
         selectCity: '',
         mailbox: '',
@@ -110,7 +114,7 @@
         this.selectCity = city
       },
       nameMethods() {
-        if(this.userName === '') {
+        if(this.modifyUserName === '') {
           this.$message.error('请填写用户名');
           return false
         }
@@ -119,6 +123,7 @@
 //        }).catch(function (error) {
 //          console.log('失败')
 //        })
+        this.userName = this.modifyUserName
         this.modifyName = false
       },
       passwordMethods() {
@@ -152,6 +157,8 @@
           this.$message.error('请选择城市')
           return false
         }
+        this.provName = this.selectProv
+        this.cityName = this.selectCity
         this.modifyCity = false
       },
       mailboxMethods() {
@@ -163,7 +170,11 @@
         if(this.mailboxModify === '') {
           this.$message.error('请填写新邮箱')
           return false
+        }else if(!mail.test(this.mailboxModify)) {
+          this.$message.error('请填写正确的邮箱')
+          return false
         }
+        this.mailboxName = this.mailboxModify
         this.modifyMailbox = false
       }
     }
@@ -201,7 +212,7 @@
       margin-top: 18px;
     }
     .modify-city #citySelect .el-select .el-input {
-      width: 170px;
+      width: 133px;
     }
   }
 </style>

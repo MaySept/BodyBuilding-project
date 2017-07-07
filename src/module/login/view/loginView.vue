@@ -3,7 +3,7 @@
     <div class="input-content">
       <el-form ref="loginFrom" :model="loginFrom" :rules="rules">
         <el-form-item prop="user">
-          <el-input placeholder="用户名/邮箱" v-model="loginFrom.user">
+          <el-input placeholder="用户名/邮箱" v-model="loginFrom.userName">
             <template slot="prepend">用户名</template>
           </el-input>
         </el-form-item>
@@ -31,11 +31,11 @@
     data() {
       return {
         loginFrom: {
-          user: '',
+          userName: '',
           password: ''
         },
         rules: {
-          user: [
+          userName: [
             { required: true, message: '请输入用户名', trigger: 'blur' }
           ],
           password: [
@@ -48,12 +48,12 @@
       goLogin(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            //            api.GetLogin({user:this.login.user, password:this.login.password}).then(function (data) {
+            //            api.GetLogin({user:this.login.userName, password:this.login.password}).then(function (data) {
 //              console.log('成功')
 //            }).catch(function (error) {
 //              console.log('失败')
 //            })
-            sessionStorage.setItem('uid',this.loginFrom.user)
+            sessionStorage.setItem('uid',this.loginFrom.userName)
             window.location.href = 'http://localhost:8080/module/index.html#/coachManage'
           } else {
             console.log('error submit!!');

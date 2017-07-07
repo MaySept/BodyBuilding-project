@@ -27,8 +27,8 @@
             <!--注册表单-->
             <div class="input-content" v-if="registerStepTwo">
               <el-form ref="registerFrom" :model="registerFrom" :rules="rules" class="register-step">
-                <el-form-item prop="name">
-                  <el-input placeholder="建议填写健身房名称" v-model="registerFrom.name">
+                <el-form-item prop="userName">
+                  <el-input placeholder="建议填写健身房名称" v-model="registerFrom.userName">
                     <template slot="prepend">用户名</template>
                   </el-input>
                 </el-form-item>
@@ -70,7 +70,7 @@
           serialNumber: ''
         },
         registerFrom: {
-          name: '',
+          userName: '',
           mailbox: '',
           password: '',
           selectProv: '',
@@ -80,7 +80,7 @@
           serialNumber: [
             { required: true, message: '请填写序列号', trigger: 'blur' }
           ],
-          name: [
+          userName: [
             { required: true, message: '请填写用户名', trigger: 'blur' }
           ],
           mailbox: [

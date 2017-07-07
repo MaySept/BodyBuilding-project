@@ -11,15 +11,19 @@ var url = process.env.NODE_ENV !== 'production' ? '/static/api/' : config.build.
 // 请求的时候实现一个loading拦截器,不然每次都要在对应的文件写开loading和关loading
 axios.interceptors.request.use(
     config => {
+      //在发送请求之前做某事，比如说 设置loading动画显示
         store.commit(types.GLOBAL_SET_LOADINNG, true)
         return config;
     },
     err => {
+      //请求错误时做些事
         return Promise.reject(err);
     }
 )
+//添加响应拦截器
 axios.interceptors.response.use(
     response => {
+      //对响应数据做些事，比如说把loading动画关掉
         store.commit(types.GLOBAL_SET_LOADINNG, false)
         return response;
     },
@@ -27,6 +31,10 @@ axios.interceptors.response.use(
         return Promise.reject(err);
     }
 )
+
+//如果不想要这个拦截器也简单，可以删除拦截器
+// var myInterceptor = axios.interceptors.request.use(function () {/*...*/})
+// axios.interceptors.request.eject(myInterceptor)
 export default {
   //------------------------------------------------------------------------------------------
      /*忘记用户名 输入序列号*/
