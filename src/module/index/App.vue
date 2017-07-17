@@ -3,9 +3,7 @@
     <SideBar></SideBar>
     <HeadNavigation></HeadNavigation>
     <Loading></Loading>
-    <div class="details-page">
-      <router-view></router-view>
-    </div>
+    <router-view class="details-page"></router-view>
   </div>
 </template>
 
@@ -24,7 +22,7 @@
       Loading
     },
     created() {
-      if(!sessionStorage.getItem("uid")) {
+      if(!sessionStorage.getItem("isLogin")) {
         window.location.href = 'http://localhost:8080/module/login.html#/login/loginView'
       }
     }

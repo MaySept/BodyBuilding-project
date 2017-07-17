@@ -1,5 +1,5 @@
 <template>
-  <div class="spinner" v-if="false">
+  <div class="spinner" v-if="switchLoading">
     <div class="rect1"></div>
     <div class="rect2"></div>
     <div class="rect3"></div>
@@ -7,23 +7,32 @@
     <div class="rect5"></div>
   </div>
 </template>
-
 <script>
+  import {mapGetters} from 'vuex'
   export default {
     data() {
-      return {}
+      return {
+      }
+    },
+    computed: {
+      ...mapGetters([
+        'getIsLoading'
+      ]),
+      switchLoading() {
+        return this.getIsLoading
+      }
     }
   }
 </script>
 
 <style>
   .spinner {
-    width: 50px;
+    width: 60px;
     height: 60px;
     text-align: center;
     font-size: 10px;
     position: absolute;
-    left: 60%;
+    left: 55%;
     top: 40%;
     margin-left:-25px;
     margin-top:-30px;

@@ -6,7 +6,7 @@ import api from '../api'
 
 //state 代表数据实体
 const state = {
-  transferIndex: ''
+  transferIndex: false
 }
 
 //action 可以包含异步操作的状态变更

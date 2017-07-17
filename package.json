@@ -10,7 +10,9 @@
     "unit": "karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "mock": "json-server --watch mock/db.json",
+    "mockdev": "npm run mock & npm run dev"
   },
   "keywords": [
     "vue",
@@ -48,6 +50,7 @@
     "express": "^4.14.0",
     "extract-loader": "0.0.2",
     "extract-text-webpack-plugin": "^1.0.1",
+    "faker": "^4.1.0",
     "fastparse": "^1.1.1",
     "file-loader": "^0.9.0",
     "function-bind": "^1.0.2",

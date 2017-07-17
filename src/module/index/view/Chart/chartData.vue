@@ -278,6 +278,7 @@
     },
     created() {
       this.getPagination()
+      this.$store.dispatch('setLoading',true)
     }
   }
 </script>

@@ -256,6 +256,7 @@
     },
     created() {
       this.getPagination()
+      this.$store.dispatch('setLoading',false)
     }
   }
 </script>

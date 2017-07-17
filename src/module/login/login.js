@@ -7,6 +7,7 @@ import 'element-ui/lib/theme-default/index.css'
 import '../../assets/scss/base/_necessary.scss'
 
 require("./scss/login.scss")
+Vue.prototype.$Common = Common
 
 Vue.use(ElementUI)
  new Vue({

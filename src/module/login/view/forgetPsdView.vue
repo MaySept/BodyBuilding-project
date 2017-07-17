@@ -30,7 +30,7 @@
         rules: {
           mailbox: [
             { required: true, message: '请填写邮箱地址', trigger: 'blur' },
-            { pattern: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/, message: '请输入正确的邮箱地址', trigger: 'blur' }
+            { pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/, message: '请输入正确的邮箱地址', trigger: 'blur' }
           ],
         }
       }

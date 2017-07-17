@@ -2,7 +2,7 @@
   <div id="login-view">
     <div class="input-content">
       <el-form ref="loginFrom" :model="loginFrom" :rules="rules">
-        <el-form-item prop="user">
+        <el-form-item prop="userName">
           <el-input placeholder="用户名/邮箱" v-model="loginFrom.userName">
             <template slot="prepend">用户名</template>
           </el-input>
@@ -11,7 +11,7 @@
           <p class="prompt">忘记用户名</p>
         </router-link>
         <el-form-item prop="password">
-          <el-input placeholder="" v-model="loginFrom.password">
+          <el-input placeholder="" v-model="loginFrom.password" type="password">
             <template slot="prepend">密&nbsp;&nbsp;&nbsp;码</template>
           </el-input>
         </el-form-item>
@@ -53,7 +53,8 @@
 //            }).catch(function (error) {
 //              console.log('失败')
 //            })
-            sessionStorage.setItem('uid',this.loginFrom.userName)
+            this.$Common.setCookie('uid', this.loginFrom.userName, 7)
+            sessionStorage.setItem('isLogin', true)
             window.location.href = 'http://localhost:8080/module/index.html#/coachManage'
           } else {
             console.log('error submit!!');
@@ -61,6 +62,9 @@
           }
         })
       }
+    },
+    created() {
+      this.loginFrom.userName = this.$Common.getCookie('uid')
     }
   }
 </script>

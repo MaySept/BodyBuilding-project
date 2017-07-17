@@ -25,12 +25,12 @@
     },
     methods: {
       handleCommand(command) {
-        sessionStorage.removeItem('uid')
+        sessionStorage.removeItem('isLogin')
         window.location.href='http://localhost:8080/module/login.html#/login/loginView'
       }
     },
     created() {
-      this.userName = sessionStorage.getItem("uid")
+      this.userName = this.$Common.getCookie('uid')
     }
   }
 </script>
