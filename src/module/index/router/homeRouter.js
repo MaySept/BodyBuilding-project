@@ -14,6 +14,14 @@ export default new router ({
       component:resolve => {require(['../view/Coach/coachManage.vue'], resolve)}
     },
     {
+      path: '/studentNumber',
+      component:resolve => {require(['../view/Coach/student.vue'], resolve)}
+    },
+    {
+      path: '/details',
+      component:resolve => {require(['../view/Coach/details.vue'])}
+    },
+    {
       path: '/memberData',
       component:resolve => {require(['../view/Member/memberData.vue'], resolve)}
     },

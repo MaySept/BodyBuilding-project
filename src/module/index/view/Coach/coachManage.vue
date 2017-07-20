@@ -39,6 +39,17 @@
         </template>
       </el-table-column>
       <el-table-column
+        label="学员人数"
+        align="center"
+        max-width="120"
+        max-height="50">
+        <template scope="scope">
+          <router-link to="/studentNumber">
+            {{scope.row.studentNumber}}
+          </router-link>
+        </template>
+      </el-table-column>
+      <el-table-column
         prop="remarks"
         label="备注"
         align="center"
@@ -129,6 +140,7 @@
           userName: '张鹏1',
           gender: '男',
           time: '2017-05-03',
+          studentNumber: 2,
           remarks: '皮皮瞎'
         },{
           id:'id2',
@@ -136,6 +148,7 @@
           userName: '张鹏2',
           gender: '男',
           time: '2017-05-03',
+          studentNumber: 2,
           remarks: '皮皮瞎'
         },{
           id:'id3',
@@ -143,6 +156,7 @@
           userName: '张鹏3',
           gender: '男',
           time: '2017-05-03',
+          studentNumber: 2,
           remarks: '皮皮瞎'
         }],
         addCoach: false,
