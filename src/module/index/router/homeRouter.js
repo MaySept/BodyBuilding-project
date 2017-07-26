@@ -14,12 +14,12 @@ export default new router ({
       component:resolve => {require(['../view/Coach/coachManage.vue'], resolve)}
     },
     {
-      path: '/studentNumber',
+      path: '/studentNumber/:cid',
       component:resolve => {require(['../view/Coach/student.vue'], resolve)}
     },
     {
-      path: '/details',
-      component:resolve => {require(['../view/Coach/details.vue'])}
+      path: '/details/:sid',
+      component:resolve => {require(['../view/Coach/details.vue'], resolve)}
     },
     {
       path: '/memberData',
@@ -31,3 +31,4 @@ export default new router ({
     }
   ]
 })
+

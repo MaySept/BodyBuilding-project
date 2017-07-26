@@ -58,7 +58,7 @@
       this.indexPath = sessionStorage.getItem("path") || '1'
 
       // 路由初始化
-      switch (this.indexPath) {
+  /*    switch (this.indexPath) {
         case '1':
           this.$router.push({ path: '/'})
           break;
@@ -71,7 +71,7 @@
         case '4':
           this.$router.push({ path: '/setting'})
           break;
-      }
+      }*/
 
 
     }

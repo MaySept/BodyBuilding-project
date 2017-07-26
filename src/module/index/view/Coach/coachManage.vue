@@ -44,7 +44,7 @@
         max-width="120"
         max-height="50">
         <template scope="scope">
-          <router-link to="/studentNumber">
+          <router-link :to="'/studentNumber/' + scope.row.id">
             {{scope.row.studentNumber}}
           </router-link>
         </template>
@@ -85,9 +85,9 @@
       </el-input>
       <div class="search-result" v-if="coachInformation">
         <el-row>
-          <el-col :span="4"><span><img :src="picture" alt=""></span></el-col>
-          <el-col :span="4"><span class="lineHeight">{{userName}}</span></el-col>
-          <el-col :span="4"><span class="lineHeight">{{gender}}</span></el-col>
+          <el-col :span="4"><span><img :src="information.picture" alt=""></span></el-col>
+          <el-col :span="4"><span class="lineHeight">{{information.userName}}</span></el-col>
+          <el-col :span="4"><span class="lineHeight">{{information.gender}}</span></el-col>
         </el-row>
       </div>
       <div class="search-result" v-if="noCoachInformation" style="height: 33px">
@@ -135,24 +135,24 @@
     data() {
       return {
         coachData:[{
-          id:'id1',
-          picture: '//www.baidu.com/img/bd_logo1.png',
+          id:'001',
+          picture: 'https://sfault-avatar.b0.upaiyun.com/356/627/3566270320-58cfc0a0c97df_huge256',
           userName: '张鹏1',
           gender: '男',
           time: '2017-05-03',
           studentNumber: 2,
           remarks: '皮皮瞎'
         },{
-          id:'id2',
-          picture: '//www.baidu.com/img/bd_logo1.png',
+          id:'002',
+          picture: 'https://sfault-avatar.b0.upaiyun.com/356/627/3566270320-58cfc0a0c97df_huge256',
           userName: '张鹏2',
           gender: '男',
           time: '2017-05-03',
           studentNumber: 2,
           remarks: '皮皮瞎'
         },{
-          id:'id3',
-          picture: '//www.baidu.com/img/bd_logo1.png',
+          id:'003',
+          picture: 'https://sfault-avatar.b0.upaiyun.com/356/627/3566270320-58cfc0a0c97df_huge256',
           userName: '张鹏3',
           gender: '男',
           time: '2017-05-03',
@@ -167,9 +167,14 @@
         noCoachInformation: false,
         $id: '',
         mobile: '',
-        picture: '//www.baidu.com/img/bd_logo1.png',
-        userName: '张鹏',
-        gender: '男',
+        information: {
+          id:'004',
+          picture: 'https://sfault-avatar.b0.upaiyun.com/356/627/3566270320-58cfc0a0c97df_huge256',
+          userName: '张鹏3',
+          gender: '男',
+          studentNumber: 2,
+          remarks: '皮皮瞎'
+        },
         time: '',
         total: 500,
         pageSize: 10,
@@ -200,21 +205,21 @@
     },
     methods: {
       addCoachBtn() {
-//        if (this.coachData.indexOf(1) !== -1){
-//        }else {
-//          this.$message.error('您添加的教练已存在');
-//        }
-        this.coachData.push({
-          id: 1,
-          picture: '//www.baidu.com/img/bd_logo1.png',
-          userName: '张鹏',
-          gender: '男',
-          time: this.$Common.getNewDate()
-        })
+        for(let i=0; i<this.coachData.length; i++){
+          if(this.information.id === this.coachData[i].id){
+            this.$message.error('您添加的教练已存在')
+            return false
+          }
+        }
+        this.information.time = this.$Common.getNewDate()
+        this.coachData.push(this.information)
         this.$message({
           message: '添加成功',
           type: 'success'
         });
+        this.coachInformation = false
+        this.disabled = true
+        this.mobile = ''
         this.addCoach = false
       },
       editRemarks(index, id) {
@@ -293,19 +298,6 @@
     .el-input__icon {
       color:#02d1b1;
       font-size: 20px
-    }
-    .search-result {
-      height: 50px;
-      margin-top: 10px;
-      overflow: hidden;
-      margin-bottom: -30px;
-      img {
-        width: 40px;
-        height: 40px;
-      }
-      .lineHeight {
-        line-height: 51px;
-      }
     }
     .no-coachInformation {
       line-height: 37px;

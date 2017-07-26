@@ -192,19 +192,20 @@
           },
           tooltip : {
             trigger: 'axis',
-            // 提示框文字显示
-            formatter:this.historyYear+"年{b}<br/>{c}人次",
-            // 提示框颜色
-            backgroundColor:'#99FFCC',
-            axisPointer: {
-              type: 'cross',
+            formatter:this.historyYear+"年{b}<br/>{c}人次",  // 提示框文字显示
+            backgroundColor:'#99FFCC', // 提示框颜色
+            axisPointer: {    // 坐标轴指示器
+              type: 'cross',  // 删掉则去掉横向指示器
               label: {
-                // 坐标轴hover 标注颜色
-                backgroundColor: '#6a7985'
+                backgroundColor: '#6a7985',   // 坐标轴hover 标注颜色
+                show: true,
+                precision: 0, // 指示器精度
               }
-            }
+            },
+            confine: true,  // 将 tooltip 框限制在图表的区域内
+             /*showContent: false*/  //去掉提示框
           },
-          legend: {
+          legend: { // 点击显示或隐藏折线
             data:['使用人次']
           },
           toolbox: {
@@ -214,21 +215,36 @@
             }
           },
           grid: {
-            left: '3%',
+            // 直角坐标系网格
+            show: true,
+            left: '4%',
             right: '4%',
             bottom: '3%',
             containLabel: true
           },
-          xAxis : [
-            {
-              type : 'category',
-              boundaryGap : false,
-              data : this.timeSlotArr
+          xAxis : [{ // 横坐标轴
+            axisTick: { // 坐标轴刻度
+              show: true
+            },
+            splitLine: { // 竖直分割线（按刻度划分）
+              show: false
+            },
+            type: 'category',
+            boundaryGap: false, //图形两边与坐标轴留白距离['20%','20%']
+            data: this.timeSlotArr // data 也可以单独配置字体样式
             }
           ],
           yAxis : [
             {
-              type : 'value'
+              type : 'value',
+              axisLabel : { // 去掉Y轴的数值
+                formatter: function(){
+                  return "";
+                }
+              },
+              axisTick: { // 去掉坐标轴刻度
+                show: false
+              }
             }
           ],
           series : [
@@ -236,6 +252,7 @@
               name:'使用人次',
               type:'line',
               stack: '总量',
+              symbolSize: 4, // 小圆点大小
               itemStyle:{
                 // 折线颜色
                 normal:{color:'#33FF00'}
